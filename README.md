@@ -10,6 +10,7 @@ Projet de cours consacré aux retards des vols américains de 2015, basé sur le
 - [Présentation et progression du projet](PROJET-VOLS.md)
 - [Démarrage sous Windows](DEMARRAGE-WINDOWS.md)
 - [Notebook Jour 1 exécuté](notebooks/J1_HDFS_Ingestion_Bronze.ipynb)
+- [Rapport Jour 1 — réponses aux exercices](Jour%201.md)
 
 Les fichiers CSV restent hors Git. Après démarrage de Docker avec `docker compose up -d --build`, les données peuvent être régénérées avec :
 
