@@ -1,0 +1,38 @@
+{
+  "dataset": "usdot/flight-delays",
+  "version": 1,
+  "url": "https://www.kaggle.com/datasets/usdot/flight-delays",
+  "year": 2015,
+  "months": [
+    1,
+    4,
+    7,
+    11
+  ],
+  "selection": "Tous les vols de janvier, avril, juillet et novembre ; aucune sélection selon le retard.",
+  "limitations": "Quatre mois seulement : résultats descriptifs de cet extrait, pas des estimations annuelles. Novembre inclut Thanksgiving. Octobre exclu : codes aéroports numériques dans la source.",
+  "rows_by_month": {
+    "1": 469968,
+    "4": 485151,
+    "7": 520718,
+    "11": 467972
+  },
+  "flight_rows": 1943809,
+  "files": [
+    {
+      "name": "airlines.csv",
+      "bytes": 359,
+      "sha256": "ec54f453260c2a46fc76d497ab0eb0a4c13724b566fba8a7ce3bb8ad712acca3"
+    },
+    {
+      "name": "airports.csv",
+      "bytes": 23867,
+      "sha256": "23c4cea98c318225bd923b2068ead8af089845071f79fd9ea0037ba6a61cd4e2"
+    },
+    {
+      "name": "flights.csv",
+      "bytes": 199285860,
+      "sha256": "5a72b46f1ee8339c613162f10f5ef4781ae20c46d88cc4e5588b9eb368a015e3"
+    }
+  ]
+}

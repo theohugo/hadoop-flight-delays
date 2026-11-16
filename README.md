@@ -1,3 +1,28 @@
+# Flight Delays — Data Lakehouse Hadoop, Spark et Delta Lake
+
+Projet de cours consacré aux retards des vols américains de 2015, basé sur le dépôt pédagogique [aptitek/hadoop-kaggle](https://github.com/aptitek/hadoop-kaggle).
+
+**Problématique : quels aéroports, compagnies et créneaux concentrent les retards ?**
+
+- **Données :** 1 943 809 vols de janvier, avril, juillet et novembre 2015, 14 compagnies et 322 aéroports.
+- **Jour 1 terminé :** ingestion HDFS, 12 blocs pour le CSV des vols, trois tables Delta Bronze et crash-test d'un DataNode vérifié.
+- **À réaliser :** nettoyage et jointures Silver, analyses Gold, tests statistiques, segmentation et dashboard.
+- [Présentation et progression du projet](PROJET-VOLS.md)
+- [Démarrage sous Windows](DEMARRAGE-WINDOWS.md)
+- [Notebook Jour 1 exécuté](notebooks/J1_HDFS_Ingestion_Bronze.ipynb)
+
+Les fichiers CSV restent hors Git. Après démarrage de Docker avec `docker compose up -d --build`, les données peuvent être régénérées avec :
+
+```bash
+docker exec spark-jupyter python /workspace/scripts/prepare_flights.py
+```
+
+Source : [2015 Flight Delays and Cancellations](https://www.kaggle.com/datasets/usdot/flight-delays), version 1. Le périmètre de quatre mois ne représente pas toute l'année ; les limites sont documentées dans le projet.
+
+---
+
+## Documentation de la stack pédagogique
+
 # TP Big Data Lakehouse — HDFS (3 DataNodes) + PySpark + Delta Lake + Streamlit
 
 Environnement pédagogique complet compatible nativement **`linux/amd64` (PC x86_64 / WSL2)** et **`linux/arm64` (Apple Silicon M1–M4 / Linux ARM64)** sur **Ubuntu 26.04 LTS**, reposant sur un **cluster HDFS 3.5 réel distribué (1 NameNode + 3 DataNodes)** avec blocs réduits à **16 Mo** et détection de panne abaissée à **~50 secondes**, couplé à une image mutualisée légère (`ubuntu:26.04` + **Python 3.15** via `uv` + OpenJDK 21 + JARs Delta pré-embarqués) pour **PySpark 4.2**, **Delta Lake 4.4**, **JupyterLab 4.6** et **Streamlit**.

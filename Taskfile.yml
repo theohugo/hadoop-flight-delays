@@ -38,10 +38,10 @@ tasks:
       - |
         echo "Attente de l'enregistrement des 3 DataNodes HDFS et des interfaces Web..."
         for i in $(seq 1 30); do
-          LIVE_DN=$(docker exec namenode hdfs dfsadmin -report 2>/dev/null | sed -n 's/.*Live datanodes (\([0-9][0-9]*\)).*/\1/p')
+          LIVE_DN=$(docker exec namenode hdfs dfsadmin -report 2>/dev/null | tr -d '\r' | sed -n 's/.*Live datanodes (\([0-9][0-9]*\)).*/\1/p')
           LIVE_DN=${LIVE_DN:-0}
-          JUPYTER_OK=$(curl -fs -o /dev/null http://localhost:8888/api && echo "1" || echo "0")
-          STREAMLIT_OK=$(curl -fs -o /dev/null http://localhost:8501/_stcore/health && echo "1" || echo "0")
+          JUPYTER_OK=$(curl -fs http://localhost:8888/api > /dev/null && echo "1" || echo "0")
+          STREAMLIT_OK=$(curl -fs http://localhost:8501/_stcore/health > /dev/null && echo "1" || echo "0")
           if [ "$LIVE_DN" = "3" ] && [ "$JUPYTER_OK" = "1" ] && [ "$STREAMLIT_OK" = "1" ]; then
             echo "Cluster opérationnel : 3/3 DataNodes actifs, JupyterLab (:8888) et Streamlit (:8501) prêts."
             exit 0

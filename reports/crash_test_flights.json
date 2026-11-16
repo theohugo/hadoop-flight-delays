@@ -1,0 +1,249 @@
+{
+  "started_at": "2026-11-16T13:19:06.041301+00:00",
+  "observations": [
+    {
+      "elapsed_seconds": 0.7,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 3.7,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 6.7,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 9.7,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 12.7,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 15.7,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 18.7,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 21.7,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 24.7,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 27.8,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 30.8,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 33.8,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 36.8,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 39.8,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 42.9,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 45.9,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 48.9,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 51.9,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 54.9,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 57.9,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 60.9,
+      "NumLiveDataNodes": 2,
+      "NumDeadDataNodes": 1,
+      "UnderReplicatedBlocks": 4,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 83.3,
+      "NumLiveDataNodes": 2,
+      "NumDeadDataNodes": 1,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 86.2,
+      "NumLiveDataNodes": 2,
+      "NumDeadDataNodes": 1,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 89.2,
+      "NumLiveDataNodes": 2,
+      "NumDeadDataNodes": 1,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 92.2,
+      "NumLiveDataNodes": 2,
+      "NumDeadDataNodes": 1,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    },
+    {
+      "elapsed_seconds": 95.2,
+      "NumLiveDataNodes": 3,
+      "NumDeadDataNodes": 0,
+      "UnderReplicatedBlocks": 0,
+      "MissingBlocks": 0,
+      "BlocksTotal": 24
+    }
+  ],
+  "before": {
+    "NumLiveDataNodes": 3,
+    "NumDeadDataNodes": 0,
+    "UnderReplicatedBlocks": 0,
+    "MissingBlocks": 0,
+    "BlocksTotal": 24
+  },
+  "detected": {
+    "NumLiveDataNodes": 2,
+    "NumDeadDataNodes": 1,
+    "UnderReplicatedBlocks": 4,
+    "MissingBlocks": 0,
+    "BlocksTotal": 24
+  },
+  "detection_seconds": 60.9,
+  "read_during_outage": {
+    "rows": 1943809,
+    "spark_partitions": 2,
+    "spark_version": "4.2.0"
+  },
+  "repaired_while_down": {
+    "NumLiveDataNodes": 2,
+    "NumDeadDataNodes": 1,
+    "UnderReplicatedBlocks": 0,
+    "MissingBlocks": 0,
+    "BlocksTotal": 24
+  },
+  "fsck_while_down": "FSCK started by root (auth:SIMPLE) from /172.24.0.2 for path /lakehouse/bronze/raw/flight-delays at Mon Nov 16 13:20:31 GMT 2026\n\n/lakehouse/bronze/raw/flight-delays <dir>\n/lakehouse/bronze/raw/flight-delays/airlines.csv 359 bytes, replicated: replication=2, 1 block(s):  OK\n0. BP-1555152489-172.24.0.2-1794818326285:blk_1073741828_1004 len=359 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK], DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK]]\n\n/lakehouse/bronze/raw/flight-delays/airports.csv 23867 bytes, replicated: replication=2, 1 block(s):  OK\n0. BP-1555152489-172.24.0.2-1794818326285:blk_1073741829_1005 len=23867 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK], DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK]]\n\n/lakehouse/bronze/raw/flight-delays/flights.csv 199285860 bytes, replicated: replication=2, 12 block(s):  OK\n0. BP-1555152489-172.24.0.2-1794818326285:blk_1073741830_1006 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK], DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK]]\n1. BP-1555152489-172.24.0.2-1794818326285:blk_1073741831_1007 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK], DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK]]\n2. BP-1555152489-172.24.0.2-1794818326285:blk_1073741832_1008 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK], DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK]]\n3. BP-1555152489-172.24.0.2-1794818326285:blk_1073741833_1009 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK], DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK]]\n4. BP-1555152489-172.24.0.2-1794818326285:blk_1073741834_1010 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK], DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK]]\n5. BP-1555152489-172.24.0.2-1794818326285:blk_1073741835_1011 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK], DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK]]\n6. BP-1555152489-172.24.0.2-1794818326285:blk_1073741836_1012 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK], DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK]]\n7. BP-1555152489-172.24.0.2-1794818326285:blk_1073741837_1013 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK], DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK]]\n8. BP-1555152489-172.24.0.2-1794818326285:blk_1073741838_1014 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK], DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK]]\n9. BP-1555152489-172.24.0.2-1794818326285:blk_1073741839_1015 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK], DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK]]\n10. BP-1555152489-172.24.0.2-1794818326285:blk_1073741840_1016 len=16777216 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK], DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK]]\n11. BP-1555152489-172.24.0.2-1794818326285:blk_1073741841_1017 len=14736484 Live_repl=2  [DatanodeInfoWithStorage[172.24.0.3:9866,DS-f4c09707-cc49-4e23-8a59-bab524e0d080,DISK], DatanodeInfoWithStorage[172.24.0.4:9866,DS-e37bc1c0-e95f-4c1a-96eb-b05d099af741,DISK]]\n\n\nStatus: HEALTHY\n Number of data-nodes:\t2\n Number of racks:\t\t1\n Total dirs:\t\t\t1\n Total symlinks:\t\t0\n\nReplicated Blocks:\n Total size:\t199310086 B\n Total files:\t3\n Total blocks (validated):\t14 (avg. block size 14236434 B)\n Minimally replicated blocks:\t14 (100.0 %)\n Over-replicated blocks:\t0 (0.0 %)\n Under-replicated blocks:\t0 (0.0 %)\n Mis-replicated blocks:\t\t0 (0.0 %)\n Default replication factor:\t2\n Average block replication:\t2.0\n Missing blocks:\t\t0\n Corrupt blocks:\t\t0\n Missing replicas:\t\t0 (0.0 %)\n Blocks queued for replication:\t0\n\nErasure Coded Block Groups:\n Total size:\t0 B\n Total files:\t0\n Total block groups (validated):\t0\n Minimally erasure-coded block groups:\t0\n Over-erasure-coded block groups:\t0\n Under-erasure-coded block groups:\t0\n Unsatisfactory placement block groups:\t0\n Average block group size:\t0.0\n Missing block groups:\t\t0\n Corrupt block groups:\t\t0\n Missing internal blocks:\t0\n Blocks queued for replication:\t0\nFSCK ended at Mon Nov 16 13:20:31 GMT 2026 in 16 milliseconds\n\n\nThe filesystem under path '/lakehouse/bronze/raw/flight-delays' is HEALTHY\n",
+  "success": true,
+  "after_restore": {
+    "NumLiveDataNodes": 3,
+    "NumDeadDataNodes": 0,
+    "UnderReplicatedBlocks": 0,
+    "MissingBlocks": 0,
+    "BlocksTotal": 24
+  }
+}
