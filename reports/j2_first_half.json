@@ -1,0 +1,120 @@
+{
+  "scope": "Exercices 1.1 et 2.1 seulement",
+  "spark_version": "4.2.0",
+  "bronze_rows": {
+    "flights": 1943809,
+    "airlines": 14,
+    "airports": 322
+  },
+  "missing_values": {
+    "flights": {
+      "year": 0,
+      "month": 0,
+      "day": 0,
+      "day_of_week": 0,
+      "airline": 0,
+      "flight_number": 0,
+      "tail_number": 4616,
+      "origin_airport": 0,
+      "destination_airport": 0,
+      "scheduled_departure": 0,
+      "departure_time": 24756,
+      "departure_delay": 24756,
+      "taxi_out": 25611,
+      "wheels_off": 25611,
+      "scheduled_time": 2,
+      "elapsed_time": 30794,
+      "air_time": 30794,
+      "distance": 0,
+      "wheels_on": 26743,
+      "taxi_in": 26743,
+      "scheduled_arrival": 0,
+      "arrival_time": 26743,
+      "arrival_delay": 30794,
+      "diverted": 0,
+      "cancelled": 0,
+      "cancellation_reason": 1917902,
+      "air_system_delay": 1587413,
+      "security_delay": 1587413,
+      "airline_delay": 1587413,
+      "late_aircraft_delay": 1587413,
+      "weather_delay": 1587413
+    },
+    "airlines": {
+      "iata_code": 0,
+      "airline": 0
+    },
+    "airports": {
+      "iata_code": 0,
+      "airport": 0,
+      "city": 0,
+      "state": 0,
+      "country": 0,
+      "latitude": 3,
+      "longitude": 3
+    }
+  },
+  "strict_duplicates_removed": 0,
+  "dimension_keys": {
+    "airlines": {
+      "missing": 0,
+      "duplicate_keys": 0
+    },
+    "airports": {
+      "missing": 0,
+      "duplicate_keys": 0
+    }
+  },
+  "invalid_numeric_casts": {
+    "year": 0,
+    "month": 0,
+    "day": 0,
+    "day_of_week": 0,
+    "flight_number": 0,
+    "cancelled": 0,
+    "diverted": 0,
+    "departure_delay": 0,
+    "arrival_delay": 0,
+    "taxi_out": 0,
+    "scheduled_time": 0,
+    "elapsed_time": 0,
+    "air_time": 0,
+    "distance": 0,
+    "taxi_in": 0,
+    "air_system_delay": 0,
+    "security_delay": 0,
+    "airline_delay": 0,
+    "late_aircraft_delay": 0,
+    "weather_delay": 0
+  },
+  "excluded_invalid_core": 0,
+  "rows_before_join": 1943809,
+  "rows_after_join": 1943809,
+  "join_matches": {
+    "airline": {
+      "matched_rows": 1943809,
+      "total_rows": 1943809,
+      "match_rate": 1.0
+    },
+    "origin": {
+      "matched_rows": 1943809,
+      "total_rows": 1943809,
+      "match_rate": 1.0
+    },
+    "destination": {
+      "matched_rows": 1943809,
+      "total_rows": 1943809,
+      "match_rate": 1.0
+    }
+  },
+  "silver_path": "/lakehouse/silver/flights",
+  "silver_rows": 1943809,
+  "silver_columns": 57,
+  "quality_checks": {
+    "negative_delays_preserved": 1104197,
+    "cancelled_with_delay_flag": 0,
+    "null_dates": 0
+  },
+  "lazy_jobs_before_action": 0,
+  "lazy_jobs_after_action": 6
+}
