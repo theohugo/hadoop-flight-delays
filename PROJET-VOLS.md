@@ -15,7 +15,8 @@ Les résultats concernent ces mois historiques : ils ne décrivent ni les perfor
 - **Jour 1 terminé et exécuté sans erreur :** cadrage, contrôle des données, copie HDFS, inspection des blocs, lecture Spark et tables Delta Bronze (`flights`, `airlines`, `airports`). Les résultats d'exécution sont dans le notebook.
 - **Résilience vérifiée :** lecture des 1 943 809 vols pendant la panne, aucun bloc manquant après réparation, puis retour à trois DataNodes. `scripts/crash_test_flights.py` enregistre la panne, la lecture sur deux nœuds, la réparation et le redémarrage dans `reports/crash_test_flights.json`.
 - **Jour 2 terminé :** diagnostic qualité, typage, trois jointures broadcast contrôlées et table Silver de 1 943 809 vols. Journal `_delta_log`, refus d'un schéma incompatible, `MERGE` (2 mises à jour, 1 insertion), Time Travel puis `RESTORE` de l'état validé. Voir [le rapport](Jour%202.md) et `reports/j2_second_half.json`.
-- **Jours 3 et 4 :** à réaliser. Le dashboard reste le squelette d'origine.
+- **Jour 3 terminé :** retards très asymétriques (skewness 7,4 ; moyenne 9 min, médiane −2 min), d'où médiane, IQR, P90 et taux ≥ 15 min. Quatre tables Gold : `airport_delay_pareto`, `daily_delay_trend`, `airline_monthly_performance`, `hourly_delay_profile`. Silver compactée par `OPTIMIZE` (8 fichiers → 1). Voir [le rapport](Jour%203.md) et `reports/j3_gold.json`.
+- **Jour 4 :** à réaliser. Le dashboard reste le squelette d'origine.
 
 ## Reprendre le travail
 
@@ -41,7 +42,7 @@ docker exec spark-jupyter jupyter nbconvert --to notebook --execute --inplace --
 python scripts/crash_test_flights.py
 ```
 
-## Suite proposée
+## Démarche retenue
 
 **Silver :** dates et types numériques, contrôle des clés et doublons, jointures gauches avec les deux référentiels en broadcast. Ajouter saison, créneau prévu, indicateur de retard ≥ 15 minutes et minutes positives de retard. Ne pas supprimer les avances (retards négatifs), ni assimiler une valeur manquante à zéro.
 

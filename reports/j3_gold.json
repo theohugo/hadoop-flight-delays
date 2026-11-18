@@ -1,0 +1,293 @@
+{
+  "spark_version": "4.2.0",
+  "silver_path": "/lakehouse/silver/flights",
+  "gold_tables": {
+    "airport_delay_pareto": {
+      "path": "/lakehouse/gold/airport_delay_pareto",
+      "rows": 322
+    },
+    "daily_delay_trend": {
+      "path": "/lakehouse/gold/daily_delay_trend",
+      "rows": 122
+    },
+    "airline_monthly_performance": {
+      "path": "/lakehouse/gold/airline_monthly_performance",
+      "rows": 54
+    },
+    "hourly_delay_profile": {
+      "path": "/lakehouse/gold/hourly_delay_profile",
+      "rows": 96
+    }
+  },
+  "silver_rows": 1943809,
+  "distribution": {
+    "departure_delay": {
+      "n": 1917902,
+      "mean": 8.98,
+      "stddev": 35.84,
+      "skewness": 7.36,
+      "min": -68,
+      "p25": -5,
+      "p50": -2,
+      "p75": 7,
+      "p90": 34,
+      "p95": 65,
+      "max": 1988,
+      "share_15_plus": "0.1825",
+      "share_early": "0.5756"
+    },
+    "arrival_delay": {
+      "n": 1913015,
+      "mean": 4.18,
+      "stddev": 38.17,
+      "skewness": 6.25,
+      "min": -87,
+      "p25": -13,
+      "p50": -5,
+      "p75": 8,
+      "p90": 34,
+      "p95": 65,
+      "max": 1971,
+      "share_15_plus": "0.1863",
+      "share_early": "0.6098"
+    }
+  },
+  "distribution_checks": {
+    "mean_minus_median": 10.98,
+    "iqr": 12
+  },
+  "pareto": {
+    "airports": 322,
+    "class_a_airports": 44,
+    "class_a_share_of_airports": 0.1366,
+    "class_a_share_of_flights": 0.7781,
+    "top10_share_minutes": 0.3991,
+    "top5_by_minutes": [
+      {
+        "airport": "ORD",
+        "city": "Chicago",
+        "flights": 103590,
+        "total_delay_minutes": 1637645,
+        "delay_rate_15": 0.23712415444061466
+      },
+      {
+        "airport": "ATL",
+        "city": "Atlanta",
+        "flights": 125524,
+        "total_delay_minutes": 1227733,
+        "delay_rate_15": 0.16797856171506279
+      },
+      {
+        "airport": "DFW",
+        "city": "Dallas-Fort Worth",
+        "flights": 87449,
+        "total_delay_minutes": 1174415,
+        "delay_rate_15": 0.22097551928783382
+      },
+      {
+        "airport": "DEN",
+        "city": "Denver",
+        "flights": 70792,
+        "total_delay_minutes": 1019818,
+        "delay_rate_15": 0.2395448120279281
+      },
+      {
+        "airport": "LAX",
+        "city": "Los Angeles",
+        "flights": 70578,
+        "total_delay_minutes": 870282,
+        "delay_rate_15": 0.20496814374686806
+      }
+    ],
+    "top5_by_rate_min_flights": [
+      {
+        "airport": "MDW",
+        "city": "Chicago",
+        "flights": 29467,
+        "delay_rate_15": 0.24251321197886083,
+        "rank_total_minutes": 16
+      },
+      {
+        "airport": "DEN",
+        "city": "Denver",
+        "flights": 70792,
+        "delay_rate_15": 0.2395448120279281,
+        "rank_total_minutes": 4
+      },
+      {
+        "airport": "ORD",
+        "city": "Chicago",
+        "flights": 103590,
+        "delay_rate_15": 0.23712415444061466,
+        "rank_total_minutes": 1
+      },
+      {
+        "airport": "BWI",
+        "city": "Baltimore",
+        "flights": 31437,
+        "delay_rate_15": 0.23622881355932204,
+        "rank_total_minutes": 14
+      },
+      {
+        "airport": "DAL",
+        "city": "Dallas",
+        "flights": 21611,
+        "delay_rate_15": 0.2323081237730205,
+        "rank_total_minutes": 26
+      }
+    ],
+    "min_flights_for_rate": 5000
+  },
+  "monthly": [
+    {
+      "month": 1,
+      "flights": 469968,
+      "delay_rate_15": 0.1983139222596324,
+      "cancellation_rate": 0.025495352875089368,
+      "median_delay": -2,
+      "p90_delay": 37,
+      "mean_delay": 9.73
+    },
+    {
+      "month": 4,
+      "flights": 485151,
+      "delay_rate_15": 0.16589441796305274,
+      "cancellation_rate": 0.009316686969623891,
+      "median_delay": -2,
+      "p90_delay": 29,
+      "mean_delay": 7.68
+    },
+    {
+      "month": 7,
+      "flights": 520718,
+      "delay_rate_15": 0.2126913116965684,
+      "cancellation_rate": 0.009229563794606677,
+      "median_delay": -1,
+      "p90_delay": 42,
+      "mean_delay": 11.37
+    },
+    {
+      "month": 11,
+      "flights": 467972,
+      "delay_rate_15": 0.15031303075492097,
+      "cancellation_rate": 0.009827511047669518,
+      "median_delay": -2,
+      "p90_delay": 26,
+      "mean_delay": 6.92
+    }
+  ],
+  "worst_days": [
+    {
+      "flight_date": "2015-01-04",
+      "flights": 16352,
+      "delay_rate_15": 0.46717758653181735,
+      "cancellation_rate": 0.026479941291585127,
+      "median_delay": 12
+    },
+    {
+      "flight_date": "2015-01-03",
+      "flights": 15434,
+      "delay_rate_15": 0.4093888631397736,
+      "cancellation_rate": 0.02144615783335493,
+      "median_delay": 8
+    },
+    {
+      "flight_date": "2015-01-06",
+      "flights": 15315,
+      "delay_rate_15": 0.3510723860589812,
+      "cancellation_rate": 0.025791707476330396,
+      "median_delay": 3
+    },
+    {
+      "flight_date": "2015-01-05",
+      "flights": 16548,
+      "delay_rate_15": 0.34667659653695776,
+      "cancellation_rate": 0.026287164612037707,
+      "median_delay": 4
+    },
+    {
+      "flight_date": "2015-07-18",
+      "flights": 14892,
+      "delay_rate_15": 0.33921850407171694,
+      "cancellation_rate": 0.018734891216760675,
+      "median_delay": 1
+    }
+  ],
+  "largest_day_increase": {
+    "flight_date": "2015-07-18",
+    "prev_day_delay_rate": 0.19136086506384448,
+    "delay_rate_15": 0.33921850407171694,
+    "delay_rate_change_pts": 0.14785763900787247
+  },
+  "worst_airline_by_month": [
+    {
+      "month": 1,
+      "airline": "MQ",
+      "airline_name": "American Eagle Airlines Inc.",
+      "flights": 29900,
+      "delay_rate_15": 0.29063450673620167
+    },
+    {
+      "month": 4,
+      "airline": "F9",
+      "airline_name": "Frontier Airlines Inc.",
+      "flights": 7148,
+      "delay_rate_15": 0.22630098452883263
+    },
+    {
+      "month": 7,
+      "airline": "UA",
+      "airline_name": "United Air Lines Inc.",
+      "flights": 46478,
+      "delay_rate_15": 0.297174527276679
+    },
+    {
+      "month": 11,
+      "airline": "F9",
+      "airline_name": "Frontier Airlines Inc.",
+      "flights": 7763,
+      "delay_rate_15": 0.21288986670117768
+    }
+  ],
+  "slots": [
+    {
+      "departure_slot": "Soir",
+      "flights": 426528,
+      "delay_rate_15": 0.263832047757667,
+      "median_delay": 0,
+      "p90_delay": 51,
+      "cancellation_rate": 0.015806699677395154
+    },
+    {
+      "departure_slot": "Après-midi",
+      "flights": 714789,
+      "delay_rate_15": 0.21215002132353253,
+      "median_delay": -1,
+      "p90_delay": 39,
+      "cancellation_rate": 0.012585532233987931
+    },
+    {
+      "departure_slot": "Nuit",
+      "flights": 47965,
+      "delay_rate_15": 0.07199290210824284,
+      "median_delay": -3,
+      "p90_delay": 8,
+      "cancellation_rate": 0.013072031689773793
+    },
+    {
+      "departure_slot": "Matin",
+      "flights": 754527,
+      "delay_rate_15": 0.11549896977791499,
+      "median_delay": -3,
+      "p90_delay": 18,
+      "cancellation_rate": 0.012646333398274682
+    }
+  ],
+  "optimize": {
+    "files_before": 8,
+    "files_after": 1,
+    "size_bytes_after": 75604073,
+    "files_added": 1,
+    "files_removed": 8
+  }
+}
