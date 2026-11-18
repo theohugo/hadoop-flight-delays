@@ -14,7 +14,7 @@ Les résultats concernent ces mois historiques : ils ne décrivent ni les perfor
 
 - **Jour 1 terminé et exécuté sans erreur :** cadrage, contrôle des données, copie HDFS, inspection des blocs, lecture Spark et tables Delta Bronze (`flights`, `airlines`, `airports`). Les résultats d'exécution sont dans le notebook.
 - **Résilience vérifiée :** lecture des 1 943 809 vols pendant la panne, aucun bloc manquant après réparation, puis retour à trois DataNodes. `scripts/crash_test_flights.py` enregistre la panne, la lecture sur deux nœuds, la réparation et le redémarrage dans `reports/crash_test_flights.json`.
-- **Jour 2, première moitié terminée :** diagnostic qualité, typage, trois jointures broadcast contrôlées et table Silver de 1 943 809 vols. Voir [le rapport partiel](Jour%202.md). La partie Delta transactionnelle reste à faire.
+- **Jour 2 terminé :** diagnostic qualité, typage, trois jointures broadcast contrôlées et table Silver de 1 943 809 vols. Journal `_delta_log`, refus d'un schéma incompatible, `MERGE` (2 mises à jour, 1 insertion), Time Travel puis `RESTORE` de l'état validé. Voir [le rapport](Jour%202.md) et `reports/j2_second_half.json`.
 - **Jours 3 et 4 :** à réaliser. Le dashboard reste le squelette d'origine.
 
 ## Reprendre le travail

@@ -6,13 +6,14 @@ Projet de cours consacré aux retards des vols américains de 2015, basé sur le
 
 - **Données :** 1 943 809 vols de janvier, avril, juillet et novembre 2015, 14 compagnies et 322 aéroports.
 - **Jour 1 terminé :** ingestion HDFS, 12 blocs pour le CSV des vols, trois tables Delta Bronze et crash-test d'un DataNode vérifié.
-- **Jour 2, première moitié terminée :** diagnostic qualité, nettoyage, jointures et table Silver validés.
-- **À réaliser :** transactions Delta (fin du Jour 2), analyses Gold, tests statistiques, segmentation et dashboard.
+- **Jour 2 terminé :** diagnostic qualité, nettoyage, jointures broadcast, table Silver, journal Delta, Schema Enforcement, `MERGE` et Time Travel validés.
+- **À réaliser :** analyses Gold, tests statistiques, segmentation et dashboard.
 - [Présentation et progression du projet](PROJET-VOLS.md)
 - [Démarrage sous Windows](DEMARRAGE-WINDOWS.md)
 - [Notebook Jour 1 exécuté](notebooks/J1_HDFS_Ingestion_Bronze.ipynb)
 - [Rapport Jour 1 — réponses aux exercices](Jour%201.md)
-- [Rapport Jour 2 — première moitié](Jour%202.md)
+- [Notebook Jour 2 exécuté](notebooks/J2_Spark_Delta_Silver.ipynb)
+- [Rapport Jour 2 — Silver et transactions Delta](Jour%202.md)
 
 Les fichiers CSV restent hors Git. Après démarrage de Docker avec `docker compose up -d --build`, les données peuvent être régénérées avec :
 

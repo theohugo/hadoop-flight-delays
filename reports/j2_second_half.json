@@ -1,0 +1,93 @@
+{
+  "scope": "Exercices 3.1 et 3.2",
+  "silver_path": "/lakehouse/silver/flights",
+  "version_before_tests": 3,
+  "rows_before_tests": 1943809,
+  "log_commit_0": {
+    "actions": {
+      "add": 8,
+      "commitInfo": 1,
+      "metaData": 1,
+      "protocol": 1
+    },
+    "operation": "WRITE",
+    "mode": "Overwrite",
+    "num_files": "8",
+    "num_output_rows": "1943809",
+    "schema_fields": 57
+  },
+  "commit_files_before_tests": [
+    "00000000000000000000.json",
+    "00000000000000000001.json",
+    "00000000000000000002.json",
+    "00000000000000000003.json"
+  ],
+  "schema_enforcement": {
+    "rejected": true,
+    "error": "AnalysisException: [DELTA_METADATA_MISMATCH] A metadata mismatch was detected when writing to the Delta table.",
+    "version_unchanged": true,
+    "rows_unchanged": true
+  },
+  "merge": {
+    "match_key": [
+      "flight_date",
+      "airline",
+      "flight_number",
+      "origin_airport",
+      "scheduled_departure"
+    ],
+    "version": 4,
+    "rows_updated": 2,
+    "rows_inserted": 1,
+    "comparison": [
+      {
+        "flight_date": "2015-01-01",
+        "airline": "AA",
+        "flight_number": 65,
+        "origin_airport": "JFK",
+        "retard_avant": 10.0,
+        "retard_apres": 15.0,
+        "flag15_avant": 0,
+        "flag15_apres": 1,
+        "source_apres": "demo_merge_j2"
+      },
+      {
+        "flight_date": "2015-01-01",
+        "airline": "AA",
+        "flight_number": 96,
+        "origin_airport": "DFW",
+        "retard_avant": 11.0,
+        "retard_apres": 16.0,
+        "flag15_avant": 0,
+        "flag15_apres": 1,
+        "source_apres": "demo_merge_j2"
+      },
+      {
+        "flight_date": "2015-01-01",
+        "airline": "AA",
+        "flight_number": 99999,
+        "origin_airport": "JFK",
+        "retard_avant": null,
+        "retard_apres": -5.0,
+        "flag15_avant": null,
+        "flag15_apres": 0,
+        "source_apres": "demo_merge_j2"
+      }
+    ]
+  },
+  "time_travel": {
+    "rows_version_0": 1943809,
+    "rows_before_merge": 1943809,
+    "rows_after_merge": 1943810
+  },
+  "restore": {
+    "to_version": 3,
+    "version": 5,
+    "rows_after_restore": 1943809,
+    "demo_rows_left": 0
+  },
+  "history_last_operations": [
+    "RESTORE",
+    "MERGE"
+  ]
+}
