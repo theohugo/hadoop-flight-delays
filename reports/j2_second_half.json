@@ -1,7 +1,7 @@
 {
   "scope": "Exercices 3.1 et 3.2",
   "silver_path": "/lakehouse/silver/flights",
-  "version_before_tests": 3,
+  "version_before_tests": 1,
   "rows_before_tests": 1943809,
   "log_commit_0": {
     "actions": {
@@ -18,9 +18,7 @@
   },
   "commit_files_before_tests": [
     "00000000000000000000.json",
-    "00000000000000000001.json",
-    "00000000000000000002.json",
-    "00000000000000000003.json"
+    "00000000000000000001.json"
   ],
   "schema_enforcement": {
     "rejected": true,
@@ -36,7 +34,7 @@
       "origin_airport",
       "scheduled_departure"
     ],
-    "version": 4,
+    "version": 2,
     "rows_updated": 2,
     "rows_inserted": 1,
     "comparison": [
@@ -81,8 +79,8 @@
     "rows_after_merge": 1943810
   },
   "restore": {
-    "to_version": 3,
-    "version": 5,
+    "to_version": 1,
+    "version": 3,
     "rows_after_restore": 1943809,
     "demo_rows_left": 0
   },

@@ -1,0 +1,46 @@
+{
+  "checked_at": "2026-11-19T10:40:07.676389+00:00",
+  "checks": {
+    "J1_HDFS_Ingestion_Bronze.ipynb": "8 cellules exécutées sans erreur",
+    "J2_Spark_Delta_Silver.ipynb": "6 cellules exécutées sans erreur",
+    "J3_Analytics_SQL_Gold.ipynb": "6 cellules exécutées sans erreur",
+    "J4_Stats_Segmentation_Dashboard.ipynb": "4 cellules exécutées sans erreur",
+    "silver_totals": {
+      "flights": 1943809,
+      "cancelled_flights": 25907,
+      "observed_flights": 1917902,
+      "delayed_15_flights": 349940
+    },
+    "silver_active_files": [
+      {
+        "bytes": 75604074,
+        "hdfs_block_size": 134217728,
+        "blocks": 1
+      }
+    ],
+    "airport_delay_pareto": {
+      "rows": 322,
+      "totals_match_silver": true
+    },
+    "daily_delay_trend": {
+      "rows": 122,
+      "totals_match_silver": true
+    },
+    "airline_monthly_performance": {
+      "rows": 54,
+      "totals_match_silver": true
+    },
+    "hourly_delay_profile": {
+      "rows": 96,
+      "totals_match_silver": true
+    },
+    "pareto_threshold": {
+      "airports": 45,
+      "share_minutes": 0.8027538477405317
+    },
+    "time_units": "LAG intra-mois ; différences en points de pourcentage",
+    "segmentation": "322 aéroports uniques ; tous les vols conservés"
+  },
+  "scope": "J1-J3 et tests/segmentation J4 ; dashboard exclu volontairement",
+  "success": true
+}

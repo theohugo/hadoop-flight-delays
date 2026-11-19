@@ -2,7 +2,7 @@
 
 **Projet : analyse des retards des vols américains de 2015**  
 **Binôme : TheoHugo et aminetaleb18**  
-**Dates de réalisation : 17 et 18 novembre 2026**
+**Dates de réalisation : 17 et 18 novembre 2026 ; revue et réexécution le 19 novembre 2026**
 
 Ce rapport présente les résultats du [notebook du Jour 2](notebooks/J2_Spark_Delta_Silver.ipynb), exécuté intégralement sans erreur.
 
@@ -44,7 +44,7 @@ Une version de la table correspond à l'ensemble des fichiers ajoutés et non re
 AnalysisException: [DELTA_METADATA_MISMATCH] A metadata mismatch was detected when writing to the Delta table.
 ```
 
-Après ce refus, la version de la table et son effectif (1 943 809 lignes) sont inchangés : la transaction échoue entièrement, sans écriture partielle. Un fichier Parquet seul n'offre pas cette protection. Une évolution de schéma reste possible, mais seulement de façon explicite avec l'option `mergeSchema`.
+Après ce refus, la version de la table et son effectif (1 943 809 lignes) sont inchangés : la transaction échoue entièrement, sans écriture partielle. Un fichier Parquet seul n'offre pas cette protection. Une évolution de schéma reste possible avec des mécanismes explicites, comme `mergeSchema` ; l’auto-évolution n’est pas activée pour ce test.
 
 ## 3. Exercice 3.2 — `MERGE`, historique et Time Travel
 
@@ -67,7 +67,7 @@ Nous avons simulé un lot correctif de la source : deux vols retardés de 10 et 
 
 L'historique Delta indique **2 lignes mises à jour et 1 insérée**. Les colonnes dérivées (`departure_delay_15`, `positive_departure_delay`) sont recalculées dans le lot, sinon elles deviendraient incohérentes avec le retard corrigé. Les lignes modifiées portent la source `demo_merge_j2`, ce qui préserve le lignage.
 
-Delta fonctionne en *copy-on-write* : les fichiers Parquet contenant les vols visés sont réécrits (485 613 lignes recopiées), puis les anciens fichiers sont retirés du journal. Ils ne sont pas modifiés sur place et restent donc disponibles pour les versions antérieures.
+Delta fonctionne en *copy-on-write* : les fichiers Parquet contenant les vols visés sont réécrits (le nombre de lignes recopiées dépend du placement physique des fichiers), puis les anciens fichiers sont retirés du journal. Ils ne sont pas modifiés sur place et restent donc disponibles pour les versions antérieures.
 
 ### Que montre le Time Travel ?
 
@@ -83,7 +83,7 @@ Les valeurs avant/après du tableau précédent ont été lues sur la même tabl
 
 Le lot était une démonstration : le vol fictif et les retards modifiés fausseraient les analyses Gold. Nous avons exécuté `RESTORE TABLE ... TO VERSION AS OF` vers la version précédant le `MERGE`. La table compte de nouveau **1 943 809 lignes** et **aucune ligne `demo_merge_j2`**.
 
-L'historique conserve les opérations `WRITE`, `MERGE` puis `RESTORE` : la correction et son annulation restent auditables. Les versions 1 et 2 de l'historique proviennent d'un essai préalable identique ; la réécriture de la table Silver par la section 2 a créé la version 3.
+L'historique conserve les opérations `WRITE`, `MERGE` puis `RESTORE` : la correction et son annulation restent auditables. Les numéros de version dépendent des exécutions précédentes sur chaque machine ; le dernier rapport JSON conserve ceux réellement observés. Le bloc `finally` restaure également Silver si une assertion de la démonstration échoue.
 
 Preuve : [`reports/j2_second_half.json`](reports/j2_second_half.json).
 

@@ -1,0 +1,173 @@
+{
+  "scope": "Tests statistiques et segmentation ; dashboard non réalisé",
+  "seed": 42,
+  "sampling": {
+    "population_observed": 1917902,
+    "sample_rows": 80000,
+    "monthly_rows": {
+      "1": 19079,
+      "4": 19925,
+      "7": 21601,
+      "11": 19395
+    }
+  },
+  "tests": {
+    "mann_whitney": {
+      "h0": "Distributions matin et soir identiques",
+      "alternative": "two-sided",
+      "n_morning": 30945,
+      "n_evening": 17399,
+      "statistic_U_evening": 328719527.5,
+      "pvalue": 0.0,
+      "pvalue_holm": 0.0,
+      "cliffs_delta_evening_vs_morning": 0.22107045875858033,
+      "median_morning": -3.0,
+      "median_evening": 0.0,
+      "reject_h0_nominal": true
+    },
+    "kruskal_wallis": {
+      "h0": "Distributions de rangs des quatre mois identiques",
+      "statistic_H": 421.77319381105144,
+      "pvalue": 4.2522643486064904e-91,
+      "pvalue_holm": 4.2522643486064904e-91,
+      "epsilon_squared": 0.005234926668971592,
+      "monthly_medians": {
+        "1": -1.0,
+        "4": -2.0,
+        "7": -1.0,
+        "11": -2.0
+      },
+      "reject_h0_nominal": true
+    }
+  },
+  "day_bootstrap": {
+    "days": 122,
+    "replicates": 5000,
+    "mean_daily_evening_minus_morning_minutes": 8.662615228736968,
+    "ci95": [
+      7.441150594241894,
+      9.913604160852813
+    ],
+    "limitations": "Bootstrap de jours indépendants supposés ; la dépendance entre jours et la composition des groupes persistent."
+  },
+  "clustering": {
+    "features": [
+      "flights",
+      "delay_rate_15",
+      "mean_positive_delay",
+      "cancellation_rate"
+    ],
+    "log1p_features": [
+      "flights",
+      "mean_positive_delay"
+    ],
+    "minimum_observed_flights": 100,
+    "eligible_airports": 304,
+    "excluded_airports": 18,
+    "candidates": [
+      {
+        "k": 2,
+        "silhouette": 0.2728980392492408,
+        "inertia": 884.6635096302573,
+        "min_cluster_size": 108
+      },
+      {
+        "k": 3,
+        "silhouette": 0.29796288337476645,
+        "inertia": 660.7397279434354,
+        "min_cluster_size": 74
+      },
+      {
+        "k": 4,
+        "silhouette": 0.29396306804066025,
+        "inertia": 524.0137621479579,
+        "min_cluster_size": 43
+      },
+      {
+        "k": 5,
+        "silhouette": 0.2954810489353062,
+        "inertia": 443.72425899827255,
+        "min_cluster_size": 29
+      },
+      {
+        "k": 6,
+        "silhouette": 0.26022079325822145,
+        "inertia": 393.3468777042623,
+        "min_cluster_size": 18
+      }
+    ],
+    "selected_k": 3,
+    "silhouette": 0.29796288337476645,
+    "labels": {
+      "0": "Profil 1 — trafic modeste, retards fréquents",
+      "1": "Profil 2 — trafic modeste, retards moins fréquents",
+      "2": "Profil 3 — trafic élevé, retards fréquents"
+    },
+    "scaler_mean": [
+      7.276638642352601,
+      0.1478573705222257,
+      2.4517660592846653,
+      0.020135105284869104
+    ],
+    "scaler_scale": [
+      1.6152797251470714,
+      0.04197879990841119,
+      0.28931624014675544,
+      0.01589792697812785
+    ],
+    "centers_standardized": [
+      [
+        -0.7523364375427948,
+        0.18584843453965996,
+        0.5197192451029475,
+        1.1922310403987069
+      ],
+      [
+        -0.5524486954005762,
+        -1.1578712368647641,
+        -1.1364224219077144,
+        -0.48120856991041344
+      ],
+      [
+        0.6737874564204402,
+        0.4720973117654662,
+        0.2834514640862355,
+        -0.3984603270568403
+      ]
+    ],
+    "profiles": [
+      {
+        "cluster_id": 0,
+        "segment": "Profil 1 — trafic modeste, retards fréquents",
+        "airports": 80,
+        "flights": 348.5,
+        "delay_rate_15": 0.1527466476021177,
+        "mean_positive_delay": 12.17363921196846,
+        "cancellation_rate": 0.03583370778648584
+      },
+      {
+        "cluster_id": 1,
+        "segment": "Profil 2 — trafic modeste, retards moins fréquents",
+        "airports": 74,
+        "flights": 622.5,
+        "delay_rate_15": 0.10473619827677907,
+        "mean_positive_delay": 8.241239846873825,
+        "cancellation_rate": 0.010132813809284397
+      },
+      {
+        "cluster_id": 2,
+        "segment": "Profil 3 — trafic élevé, retards fréquents",
+        "airports": 150,
+        "flights": 3368.0,
+        "delay_rate_15": 0.16010915824770733,
+        "mean_positive_delay": 11.538023401038586,
+        "cancellation_rate": 0.013282423092196615
+      }
+    ]
+  },
+  "segments": {
+    "path": "/lakehouse/gold/airport_segments",
+    "rows": 322,
+    "total_flights": 1943809
+  }
+}

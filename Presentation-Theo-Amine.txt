@@ -1,0 +1,23 @@
+Toi :
+Salut, avec Amine, on va présenter notre projet sur les retards des vols américains. On cherche à voir quels aéroports, compagnies et horaires concentrent les retards. On travaille sur environ 1,94 million de vols de quatre mois de 2015.
+
+Amine :
+Au départ, on a installé les services avec Docker. On a mis les CSV dans HDFS, puis créé les tables Bronze avec PySpark et Delta Lake. On a aussi arrêté un DataNode pour vérifier qu'on pouvait continuer à lire les données et que les copies étaient reconstruites.
+
+Toi :
+Pour Silver, on a vérifié les valeurs manquantes, les doublons et les formats. Ensuite, on a joint les vols aux compagnies et aux aéroports avec des jointures broadcast. Tous les codes ont trouvé une correspondance et on n'a pas multiplié les lignes.
+
+Amine :
+Au Jour 2, on a aussi testé les transactions Delta : un mauvais schéma est refusé, le MERGE permet de modifier ou ajouter des lignes et le Time Travel permet de retrouver une ancienne version. On a remis les données dans leur état initial après la démonstration.
+
+Toi :
+Au Jour 3, on a calculé la moyenne, la médiane et les quantiles. Le retard moyen au départ est d'environ 9 minutes, mais la médiane est de moins 2 minutes : les gros retards tirent donc la moyenne vers le haut. On a créé les tables Gold pour les aéroports, les compagnies, les jours et les horaires.
+
+Amine :
+Avec le Pareto corrigé, 45 aéroports concentrent un peu plus de 80 % des minutes de retard. Mais ils concentrent aussi beaucoup de trafic : ça ne suffit pas pour dire qu'ils sont les moins fiables. On regarde donc aussi les taux et les effectifs.
+
+Toi :
+Pour la partie réalisée du Jour 4, on a comparé le matin et le soir avec Mann–Whitney, et les quatre mois avec Kruskal–Wallis. Les différences sont visibles dans notre extrait, mais ça ne prouve pas que l'heure ou le mois cause les retards. On a aussi comparé plusieurs nombres de groupes pour K-Means : on retient trois profils d'aéroports.
+
+Amine :
+Les notebooks et les calculs ont été revérifiés. Il reste le dashboard Streamlit à construire à partir des tables Gold, avec les filtres et les graphiques. Les résultats restent limités à nos quatre mois de 2015.

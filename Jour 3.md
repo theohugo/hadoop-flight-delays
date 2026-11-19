@@ -72,7 +72,7 @@ Le second critère de tri (`airport`) rend le cumul déterministe en cas d'égal
 
 ### Les retards sont-ils concentrés ?
 
-**44 aéroports sur 322 (13,7 %)** concentrent 80 % des minutes de retard ; les 10 premiers en cumulent 39,9 %. Mais ces 44 aéroports assurent aussi **77,8 % des vols**. La concentration des minutes reflète donc d'abord celle du trafic : il ne s'agit pas d'une poignée d'aéroports anormalement mauvais.
+**45 aéroports sur 322 (14,0 %)** concentrent 80,28 % des minutes de retard ; les 10 premiers en cumulent 39,9 %. Mais ces 45 aéroports assurent aussi **78,34 % des vols**. La concentration des minutes reflète donc d'abord celle du trafic : il ne s'agit pas d'une poignée d'aéroports anormalement mauvais.
 
 ### Volume ou taux : les classements concordent-ils ?
 
@@ -94,7 +94,7 @@ Table **`/lakehouse/gold/daily_delay_trend`** : 122 lignes, une par jour.
 
 ```sql
 LAG(delay_rate_15) OVER w                       AS prev_day_delay_rate,
-delay_rate_15 - LAG(delay_rate_15) OVER w       AS delay_rate_change_pts,
+100.0 * (delay_rate_15 - LAG(delay_rate_15) OVER w) AS delay_rate_change_pts,
 AVG(delay_rate_15) OVER (PARTITION BY month ORDER BY flight_date
                          ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS delay_rate_7d_avg
 ...
@@ -148,9 +148,9 @@ Le taux de retard et le P90 augmentent nettement au fil de la journée. Ce gradi
 
 ### Pourquoi compacter avec `OPTIMIZE` ?
 
-`OPTIMIZE` a réécrit les **8 fichiers** actifs de la table Silver en **1 seul fichier** (75 604 073 octets), dans une transaction Delta. L'effectif est resté de 1 943 809 lignes.
+`OPTIMIZE` a réécrit les **8 fichiers** actifs de la table Silver en **1 seul fichier** (75 604 074 octets), dans une transaction Delta. L'effectif est resté de 1 943 809 lignes.
 
-Les micro-fichiers pénalisent HDFS parce que le NameNode garde en mémoire un objet pour chaque fichier et chaque bloc (de l'ordre de 150 octets chacun) : c'est leur nombre qui le charge, pas leur volume. Chaque ouverture de fichier coûte en outre un appel au NameNode et une connexion à un DataNode, et Spark planifie au moins une tâche par fichier.
+Les micro-fichiers pénalisent HDFS parce que le NameNode garde en mémoire un objet pour chaque fichier et chaque bloc (chaque fichier et bloc a un coût en métadonnées) : c'est leur nombre qui le charge, pas leur volume. Chaque ouverture de fichier coûte en outre un appel au NameNode et une connexion à un DataNode, et Spark doit gérer les ouvertures et les portions de lecture ; plusieurs petits fichiers peuvent être regroupés dans une même partition.
 
 Constat sur notre cluster : `hdfs fsck` montre que le fichier compacté (72 Mio) n'occupe qu'**un seul bloc HDFS**, comme les autres fichiers Parquet de Silver, malgré la taille de bloc de 16 Mio configurée. L'écrivain Parquet crée en effet ses fichiers avec une taille de bloc au moins égale à celle d'un *row group* (128 Mio par défaut), pour qu'un row group ne soit pas coupé entre deux blocs. Le découpage en blocs de 16 Mio observé au Jour 1 concerne les CSV bruts.
 
@@ -181,3 +181,6 @@ docker exec -w /workspace/notebooks spark-jupyter jupyter nbconvert --to noteboo
 ```
 
 Le notebook a été rejoué une seconde fois pour vérification : toutes les sorties sont identiques, sauf `OPTIMIZE`, qui n'a plus rien à compacter (1 fichier → 1). Une réexécution réécrit donc `reports/j3_gold.json` avec ce constat ; les valeurs de référence (8 → 1) sont celles de la première exécution, conservées dans le notebook.
+
+
+Revue du 19 novembre 2026 : seuil de Pareto corrigé (inclure l’aéroport franchissant 80 %). Les variations `delay_rate_change_pts` sont désormais stockées directement en points de pourcentage, et les variations relatives des minutes en pourcentage.

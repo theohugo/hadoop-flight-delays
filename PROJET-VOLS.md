@@ -16,7 +16,9 @@ Les résultats concernent ces mois historiques : ils ne décrivent ni les perfor
 - **Résilience vérifiée :** lecture des 1 943 809 vols pendant la panne, aucun bloc manquant après réparation, puis retour à trois DataNodes. `scripts/crash_test_flights.py` enregistre la panne, la lecture sur deux nœuds, la réparation et le redémarrage dans `reports/crash_test_flights.json`.
 - **Jour 2 terminé :** diagnostic qualité, typage, trois jointures broadcast contrôlées et table Silver de 1 943 809 vols. Journal `_delta_log`, refus d'un schéma incompatible, `MERGE` (2 mises à jour, 1 insertion), Time Travel puis `RESTORE` de l'état validé. Voir [le rapport](Jour%202.md) et `reports/j2_second_half.json`.
 - **Jour 3 terminé :** retards très asymétriques (skewness 7,4 ; moyenne 9 min, médiane −2 min), d'où médiane, IQR, P90 et taux ≥ 15 min. Quatre tables Gold : `airport_delay_pareto`, `daily_delay_trend`, `airline_monthly_performance`, `hourly_delay_profile`. Silver compactée par `OPTIMIZE` (8 fichiers → 1). Voir [le rapport](Jour%203.md) et `reports/j3_gold.json`.
-- **Jour 4 :** à réaliser. Le dashboard reste le squelette d'origine.
+- **Jour 4, partie tests et segmentation terminée :** Mann–Whitney, Kruskal–Wallis, correction de Holm, contrôle par bootstrap des jours, K-Means (3 profils sur 304 aéroports ; 18 en données limitées). Table Gold `airport_segments` : 322 aéroports. Voir [Jour 4](Jour%204.md).
+- **À faire par Amine :** dashboard Streamlit et vérification de son interface. Voir [la fiche dédiée](DASHBOARD-A-FAIRE.md).
+- **Revue globale du 19 novembre :** les quatre notebooks ont été rejoués sans erreur ; les totaux Silver/Gold et la segmentation sont contrôlés. Voir [Revue globale](REVUE-GLOBALE.md).
 
 ## Reprendre le travail
 
@@ -56,4 +58,4 @@ python scripts/crash_test_flights.py
 
 ## Mise à jour du cours
 
-Dépôt synchronisé sur `59dbe13` (branche `main`). Stack du professeur : Hadoop 3.5, PySpark 4.2, Delta Lake 4.4 et Python 3.15. Les contrôles de disponibilité du Taskfile restent adaptés à Windows ; `task` est fixé à 3.54.0 et Java 25 reste disponible sur l'hôte. Une sauvegarde Git stash des adaptations précédentes est conservée.
+Base pédagogique intégrée : `6f39640` (branche `main` du professeur). Stack du professeur : Hadoop 3.5, PySpark 4.2, Delta Lake 4.4 et Python 3.15. Les contrôles de disponibilité du Taskfile restent adaptés à Windows ; `task` est fixé à 3.54.0 et Java 25 reste disponible sur l'hôte. Une sauvegarde Git stash des adaptations précédentes est conservée.
