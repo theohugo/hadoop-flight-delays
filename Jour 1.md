@@ -213,6 +213,26 @@ Delta Lake associe des fichiers de données Parquet, organisés par colonnes, à
 
 Les trois tables ont été relues avec `spark.read.format("delta")`. Les effectifs correspondent aux données préparées. Les contrôles n'ont trouvé aucune valeur nulle dans `_source_file` ou `_ingested_at`. L'auto-contrôle final a détecté un dossier `_delta_log` dans chacune des trois tables. Les effectifs sont enregistrés dans [`reports/bronze_counts.json`](reports/bronze_counts.json).
 
+### Que montre Spark Web UI ?
+
+Spark Web UI (`http://localhost:4040`) n'est disponible que pendant qu'une session Spark est active. Pour garder une trace vérifiable, [`scripts/spark_ui_j1.py`](scripts/spark_ui_j1.py) rejoue les lectures du notebook avec la même configuration (`local[2]`), sans rien écrire sur HDFS. Le script interroge ensuite l'API REST qui alimente les onglets *Jobs* et *Stages*. Relevé : [`reports/j1_spark_ui.json`](reports/j1_spark_ui.json).
+
+| Action | Jobs | Tâches exécutées | Données lues | Échange (shuffle) |
+|---|---:|---:|---:|---:|
+| `spark.read.option("header", True).csv(...)` | 1 | 1 | 0,1 Mio | — |
+| `filter` + `select` (transformations seules) | 0 | 0 | — | — |
+| `count()` du CSV des vols | 2 | 3 | 190,1 Mio | 0,1 Kio |
+| `count()` après `filter` + `select` | 2 | 3 | 190,1 Mio | 0,1 Kio |
+| `groupBy("airline").count()` | 2 | 3 | 190,1 Mio | 1,2 Kio |
+| `count()` de la table Bronze Delta | 3 | 52 | 0 Mio de Parquet | 6,3 Kio |
+
+Ce que nous en retenons :
+
+- **Évaluation paresseuse.** `filter` et `select` ne lancent aucun job : ils complètent seulement le plan d'exécution. Le seul job avant la première action vient de l'option `header` : Spark lit la première ligne du CSV pour nommer les colonnes.
+- **Blocs et tâches.** Chaque action sur le CSV lit les 190 Mio du fichier en **2 tâches**, une par partition de lecture, alors que le fichier occupe 12 blocs HDFS. C'est le constat de l'exercice 4.1, vu cette fois du côté de l'ordonnanceur. Une 3e tâche termine l'agrégation. L'exécution adaptative (AQE) répartit ces étapes sur 2 jobs : dans le second, le stage de lecture apparaît comme *skipped*, car il est réutilisé et non recalculé. Le tableau ne compte que les tâches réellement exécutées.
+- **Narrow et wide.** Le `filter` est exécuté dans le même stage que la lecture, sans stage supplémentaire. `count()` et `groupBy` agrègent d'abord dans chaque partition, puis échangent ces résultats partiels entre stages. Cet échange est minuscule (1,2 Kio pour 14 compagnies) parce que seuls les compteurs partiels circulent, et non les 1,9 million de lignes.
+- **Delta et statistiques.** Le `count()` de la table Bronze ne lit aucun fichier Parquet : Delta répond à partir du nombre de lignes enregistré dans son journal (`_delta_log`). Les 52 tâches, dont 50 correspondant aux 50 partitions par défaut, reconstruisent l'état de la table à partir du journal : ce sont de petites tâches de métadonnées.
+
 ## 6. Bilan du Jour 1 et suite
 
 Le notebook a été exécuté intégralement sans erreur. Nous disposons d'un extrait reproductible, des trois fichiers bruts dans HDFS et de trois tables Delta Bronze traçables. Le test a vérifié la continuité de lecture pendant une panne de DataNode, la reconstruction des copies et le rétablissement du cluster.
@@ -227,3 +247,4 @@ Au Jour 2, nous typerons les colonnes, mesurerons les valeurs manquantes et doub
 - [Rapport du crash-test et sortie fsck](reports/crash_test_flights.json)
 - [Script reproductible de préparation](scripts/prepare_flights.py)
 - [Script d'orchestration du crash-test](scripts/crash_test_flights.py)
+- [Relevé Spark Web UI](reports/j1_spark_ui.json) et [script de relevé](scripts/spark_ui_j1.py)

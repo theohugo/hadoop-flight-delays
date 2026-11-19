@@ -1,5 +1,5 @@
 {
-  "scope": "Tests statistiques et segmentation ; dashboard non réalisé",
+  "scope": "Tests statistiques et segmentation ; dashboard réalisé dans app/dashboard.py",
   "seed": 42,
   "sampling": {
     "population_observed": 1917902,
@@ -29,7 +29,7 @@
       "h0": "Distributions de rangs des quatre mois identiques",
       "statistic_H": 421.77319381105144,
       "pvalue": 4.2522643486064904e-91,
-      "pvalue_holm": 4.2522643486064904e-91,
+      "pvalue_holm": 8.504528697212981e-91,
       "epsilon_squared": 0.005234926668971592,
       "monthly_medians": {
         "1": -1.0,
@@ -38,6 +38,28 @@
         "11": -2.0
       },
       "reject_h0_nominal": true
+    },
+    "spearman_latitude_delay_rate": {
+      "h0": "Pas de lien monotone entre latitude (airports.csv) et taux de retard ≥ 15 min (flights.csv)",
+      "alternative": "two-sided",
+      "unit": "aéroport d'origine, ≥ 100 vols observés, coordonnées connues",
+      "n_airports": 302,
+      "rho": -0.21505960995309947,
+      "pvalue": 0.00016588476720654505,
+      "pvalue_holm": 0.00016588476720654505,
+      "reject_h0_nominal": true,
+      "sensitivity": {
+        "contiguous_states": {
+          "n_airports": 276,
+          "rho": -0.26756556949324195,
+          "pvalue": 6.562397925112789e-06
+        },
+        "airports_5000_observed_flights": {
+          "n_airports": 65,
+          "rho": -0.20681818181818182,
+          "pvalue": 0.09833225295726179
+        }
+      }
     }
   },
   "day_bootstrap": {
@@ -49,6 +71,15 @@
       9.913604160852813
     ],
     "limitations": "Bootstrap de jours indépendants supposés ; la dépendance entre jours et la composition des groupes persistent."
+  },
+  "multiple_testing": {
+    "method": "Holm",
+    "family": [
+      "mann_whitney",
+      "kruskal_wallis",
+      "spearman_latitude_delay_rate"
+    ],
+    "alpha": 0.05
   },
   "clustering": {
     "features": [
@@ -67,7 +98,7 @@
     "candidates": [
       {
         "k": 2,
-        "silhouette": 0.2728980392492408,
+        "silhouette": 0.2728980392492407,
         "inertia": 884.6635096302573,
         "min_cluster_size": 108
       },
@@ -86,7 +117,7 @@
       {
         "k": 5,
         "silhouette": 0.2954810489353062,
-        "inertia": 443.72425899827255,
+        "inertia": 443.72425899827266,
         "min_cluster_size": 29
       },
       {
@@ -125,7 +156,7 @@
       [
         -0.5524486954005762,
         -1.1578712368647641,
-        -1.1364224219077144,
+        -1.1364224219077141,
         -0.48120856991041344
       ],
       [

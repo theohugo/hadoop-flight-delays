@@ -11,7 +11,7 @@ ROOT = Path('/workspace')
 spark = SparkSession.builder.master('local[2]').appName('Review_Project').getOrCreate()
 spark.sparkContext.setLogLevel('ERROR')
 result = {'checked_at': datetime.now(UTC).isoformat(), 'checks': {},
-          'scope': 'J1-J3 et tests/segmentation J4 ; dashboard exclu volontairement'}
+          'scope': 'Notebooks J1-J4 et couches Delta ; le dashboard est contrôlé à part (AppTest)'}
 try:
     for path in sorted((ROOT / 'notebooks').glob('*.ipynb')):
         notebook = json.loads(path.read_text(encoding='utf-8'))

@@ -16,7 +16,7 @@ Les résultats concernent ces mois historiques : ils ne décrivent ni les perfor
 - **Résilience vérifiée :** lecture des 1 943 809 vols pendant la panne, aucun bloc manquant après réparation, puis retour à trois DataNodes. `scripts/crash_test_flights.py` enregistre la panne, la lecture sur deux nœuds, la réparation et le redémarrage dans `reports/crash_test_flights.json`.
 - **Jour 2 terminé :** diagnostic qualité, typage, trois jointures broadcast contrôlées et table Silver de 1 943 809 vols. Journal `_delta_log`, refus d'un schéma incompatible, `MERGE` (2 mises à jour, 1 insertion), Time Travel puis `RESTORE` de l'état validé. Voir [le rapport](Jour%202.md) et `reports/j2_second_half.json`.
 - **Jour 3 terminé :** retards très asymétriques (skewness 7,4 ; moyenne 9 min, médiane −2 min), d'où médiane, IQR, P90 et taux ≥ 15 min. Quatre tables Gold : `airport_delay_pareto`, `daily_delay_trend`, `airline_monthly_performance`, `hourly_delay_profile`. Silver compactée par `OPTIMIZE` (8 fichiers → 1). Voir [le rapport](Jour%203.md) et `reports/j3_gold.json`.
-- **Jour 4, partie tests et segmentation terminée :** Mann–Whitney, Kruskal–Wallis, correction de Holm, contrôle par bootstrap des jours, K-Means (3 profils sur 304 aéroports ; 18 en données limitées). Table Gold `airport_segments` : 322 aéroports. Voir [Jour 4](Jour%204.md).
+- **Jour 4, partie tests et segmentation terminée :** Mann–Whitney, Kruskal–Wallis, Spearman (latitude des aéroports × taux de retard, ρ = −0,22), correction de Holm, contrôle par bootstrap des jours, K-Means (3 profils sur 304 aéroports ; 18 en données limitées). Table Gold `airport_segments` : 322 aéroports. Voir [Jour 4](Jour%204.md).
 - **Jour 4, dashboard terminé :** `app/dashboard.py` lit les cinq tables Gold et propose une carte des aéroports, le classement des compagnies, l'évolution quotidienne et horaire, les profils K-Means et le Pareto, avec filtres mois/compagnie/aéroport et requêtes SQL expliquées. Vérifié sur http://localhost:8501. Voir [Jour 4](Jour%204.md).
 - **Revue globale du 19 novembre :** les quatre notebooks ont été rejoués sans erreur ; les totaux Silver/Gold et la segmentation sont contrôlés. Voir [Revue globale](REVUE-GLOBALE.md).
 
@@ -50,7 +50,7 @@ python scripts/crash_test_flights.py
 
 **Gold :** classement/Pareto des minutes de retard par aéroport, performance des compagnies avec effectifs et P90, évolution par date et créneau. Comparer volume total et taux : un gros aéroport peut concentrer les retards sans avoir le pire taux.
 
-**Statistiques :** comparer les distributions matin/soir avec Mann–Whitney et les quatre mois avec Kruskal–Wallis. Décrire aussi les écarts observés et les limites (groupes de composition différente, dépendances entre vols), au-delà des seules p-values.
+**Statistiques :** comparer les distributions matin/soir avec Mann–Whitney et les quatre mois avec Kruskal–Wallis, puis croiser les deux sources avec un test de Spearman entre la latitude des aéroports et leur taux de retard. Décrire aussi les écarts observés et les limites (groupes de composition différente, dépendances entre vols), au-delà des seules p-values.
 
 **Segmentation :** K-Means sur les aéroports (volume, médiane/P90 du retard, taux d'annulation). Appliquer `log1p` uniquement aux mesures non négatives adaptées, puis standardiser et interpréter les profils.
 

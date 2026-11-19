@@ -177,7 +177,7 @@ def weighted(df: pd.DataFrame, by: list[str]) -> pd.DataFrame:
 
 
 def explain(key: str, text: str):
-    with st.expander("Requête SQL & justification statistique"):
+    with st.expander("Requête SQL & Justification statistique"):
         st.code(SQL[key], language="python" if key == "segments" else "sql")
         st.markdown(text)
 
@@ -327,6 +327,11 @@ distribution ; la médiane, proche de zéro presque partout, discrimine peu.
 
 **Lecture.** Un grand aéroport peut cumuler beaucoup de minutes de retard sans avoir un taux élevé :
 il faut lire la couleur et la taille ensemble.
+
+**Test associé (Jour 4).** Spearman entre la latitude (référentiel des aéroports) et le taux de retard,
+sur 302 aéroports d'au moins 100 vols : ρ = −0,22 (p corrigée = 1,7 × 10⁻⁴). Les aéroports du sud ont
+en moyenne un taux un peu plus élevé, mais le lien est faible et non significatif sur les seuls grands
+aéroports (65 aéroports ≥ 5 000 vols) : association descriptive, pas une cause.
 """)
 
 # --------------------------------------------------------------------------- 2. Compagnies

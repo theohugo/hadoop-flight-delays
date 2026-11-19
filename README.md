@@ -8,7 +8,7 @@ Projet de cours consacré aux retards des vols américains de 2015, basé sur le
 - **Jour 1 terminé :** ingestion HDFS, 12 blocs pour le CSV des vols, trois tables Delta Bronze et crash-test d'un DataNode vérifié.
 - **Jour 2 terminé :** diagnostic qualité, nettoyage, jointures broadcast, table Silver, journal Delta, Schema Enforcement, `MERGE` et Time Travel validés.
 - **Jour 3 terminé :** asymétrie des retards (médiane, IQR, P90), quatre tables Gold (Pareto des aéroports, tendance quotidienne avec `LAG`, compagnies par mois avec `ROW_NUMBER`, profil horaire) et compaction `OPTIMIZE`.
-- **Jour 4, partie tests et segmentation terminée :** deux tests statistiques, bootstrap des jours et trois profils K-Means.
+- **Jour 4, partie tests et segmentation terminée :** trois tests statistiques (dont un Spearman qui croise le référentiel des aéroports et les vols), bootstrap des jours et trois profils K-Means.
 - **Jour 4 terminé :** dashboard Streamlit sur les cinq tables Gold (carte, compagnies, évolution, profils d'aéroports ; filtres mois, compagnie et aéroport), vérifié sur http://localhost:8501.
 - [Présentation et progression du projet](PROJET-VOLS.md)
 - [Démarrage sous Windows](DEMARRAGE-WINDOWS.md)
@@ -145,7 +145,7 @@ docker compose up -d --build
 | **HDFS NameNode UI** | http://localhost:9870 | Onglets *Datanodes* & *Utilities > Browse the file system* |
 | **JupyterLab** | http://localhost:8888 | Mot de passe / Token : `bigdata` |
 | **Spark Web UI** | http://localhost:4040 | DAG, Stages & Shuffle *(actif dès qu'une `SparkSession` tourne)* |
-| **Dashboard Streamlit** | http://localhost:8501 | Lecture des tables Delta de `/lakehouse/gold/` avec cache 60s |
+| **Dashboard Streamlit** | http://localhost:8501 | Lecture des tables Delta de `/lakehouse/gold/` avec cache de 10 min |
 
 ---
 

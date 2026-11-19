@@ -17,7 +17,7 @@ Amine :
 Avec le Pareto corrigé, 45 aéroports concentrent un peu plus de 80 % des minutes de retard. Mais ils concentrent aussi beaucoup de trafic : ça ne suffit pas pour dire qu'ils sont les moins fiables. On regarde donc aussi les taux et les effectifs.
 
 Toi :
-Pour la partie réalisée du Jour 4, on a comparé le matin et le soir avec Mann–Whitney, et les quatre mois avec Kruskal–Wallis. Les différences sont visibles dans notre extrait, mais ça ne prouve pas que l'heure ou le mois cause les retards. On a aussi comparé plusieurs nombres de groupes pour K-Means : on retient trois profils d'aéroports.
+Pour la partie réalisée du Jour 4, on a comparé le matin et le soir avec Mann–Whitney, et les quatre mois avec Kruskal–Wallis. Un test de Spearman croise aussi nos deux sources : plus un aéroport est au sud, plus son taux de retard tend à être élevé, mais le lien est faible. Les différences sont visibles dans notre extrait, mais ça ne prouve pas que l'heure ou le mois cause les retards. On a aussi comparé plusieurs nombres de groupes pour K-Means : on retient trois profils d'aéroports.
 
 Amine :
 Pour finir, le dashboard Streamlit lit uniquement les tables Gold. On peut filtrer par mois, compagnie et aéroport, et voir la carte des aéroports, le classement des compagnies, l'évolution des retards par jour et par heure, et les trois profils d'aéroports. Sous chaque graphique, on affiche la requête SQL et on explique l'indicateur. Les résultats restent limités à nos quatre mois de 2015.

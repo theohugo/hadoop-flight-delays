@@ -43,7 +43,7 @@ Le fichier Parquet actif de Silver mesure **75 604 074 octets** et son bloc HDFS
 ## Vérifications du Jour 4
 
 - Seulement 80 000 observations utiles au maximum passent vers Pandas pour les tests ; l'agrégation de segmentation est faite dans Spark avant de rapatrier les aéroports.
-- Deux tests avec hypothèses écrites, correction de Holm et tailles d'effet. Le sous-flux numérique de la p-value de Mann–Whitney est signalé.
+- Deux tests avec hypothèses écrites, correction de Holm et tailles d'effet. Un troisième (Spearman, latitude × taux de retard) a été ajouté ensuite pour croiser les deux sources ; Holm porte alors sur trois tests. Le sous-flux numérique de la p-value de Mann–Whitney est signalé.
 - Vérification complémentaire par rééchantillonnage de 122 jours. La dépendance entre jours et la composition des groupes restent des limites.
 - Quatre variables de segmentation ; `log1p` seulement sur des caractéristiques non négatives, puis standardisation.
 - Comparaison de K=2 à K=6. K=3 retenu, silhouette 0,298 : séparation modérée et faible écart avec K=5, donc prudence sur l'interprétation des groupes.
@@ -60,5 +60,7 @@ Le fichier Parquet actif de Silver mesure **75 604 074 octets** et son bloc HDFS
 ## Complément — dashboard (Amine)
 
 Après un `git pull`, J2, J3 puis J4 ont été réexécutés sur le cluster local pour disposer des tables Gold corrigées et de `airport_segments`, puis `scripts/validate_project.py` a de nouveau réussi. `app/dashboard.py` respecte la [fiche](DASHBOARD-A-FAIRE.md) : lecture des seules tables Gold, taux réagrégés par sommes de numérateurs et dénominateurs, médianes et P90 affichés à leur granularité d'origine, portée de chaque filtre indiquée, mois séparés sur les courbes, ECP/PBG/UST signalés hors carte, requête SQL et justification sous chaque visualisation. Contrôles : `AppTest` de Streamlit sur huit combinaisons de filtres (dont sélection vide et aéroport sans coordonnées) sans exception, puis vérification visuelle sur http://localhost:8501. Détails dans la section « Dashboard Streamlit » de [Jour 4](Jour%204.md).
+
+Un test de Spearman a ensuite été ajouté au notebook J4, qui compte désormais **5 cellules de code** (25 au total pour J1 à J4). La correction de Holm porte sur les trois tests. `scripts/validate_project.py` confirme l'exécution sans erreur des quatre notebooks. Le rapport `reports/global_validation.json` reste celui de la revue du 19 novembre au matin : il donne 4 cellules pour J4 et un périmètre sans dashboard.
 
 Limites scientifiques conservées : quatre mois historiques non représentatifs d'une année entière, dépendance entre vols, différences de composition entre groupes, absence de démonstration causale et clusters descriptifs. Ces limites sont expliquées ; elles ne sont pas masquées par les petites p-values ou un taux de jointure de 100 %.
