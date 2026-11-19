@@ -20,4 +20,4 @@ Toi :
 Pour la partie réalisée du Jour 4, on a comparé le matin et le soir avec Mann–Whitney, et les quatre mois avec Kruskal–Wallis. Les différences sont visibles dans notre extrait, mais ça ne prouve pas que l'heure ou le mois cause les retards. On a aussi comparé plusieurs nombres de groupes pour K-Means : on retient trois profils d'aéroports.
 
 Amine :
-Les notebooks et les calculs ont été revérifiés. Il reste le dashboard Streamlit à construire à partir des tables Gold, avec les filtres et les graphiques. Les résultats restent limités à nos quatre mois de 2015.
+Pour finir, le dashboard Streamlit lit uniquement les tables Gold. On peut filtrer par mois, compagnie et aéroport, et voir la carte des aéroports, le classement des compagnies, l'évolution des retards par jour et par heure, et les trois profils d'aéroports. Sous chaque graphique, on affiche la requête SQL et on explique l'indicateur. Les résultats restent limités à nos quatre mois de 2015.

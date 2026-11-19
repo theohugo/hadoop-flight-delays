@@ -1,6 +1,6 @@
-# Travail restant — dashboard Streamlit (Amine)
+# Cahier des charges — dashboard Streamlit (Amine)
 
-Le Jour 4 est volontairement limité aux tests statistiques et à la segmentation. `app/dashboard.py` reste à développer.
+**Statut au 19 novembre 2026 : réalisé** dans [`app/dashboard.py`](app/dashboard.py) et vérifié sur `http://localhost:8501` (voir la section « Dashboard Streamlit » de [Jour 4](Jour%204.md)). Cette fiche reste le cahier des charges suivi.
 
 ## Tables Gold disponibles après exécution de J3 et J4
 

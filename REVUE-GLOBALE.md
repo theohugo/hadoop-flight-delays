@@ -2,7 +2,7 @@
 
 ## Périmètre et résultat
 
-Revue des notebooks, scripts, rapports et données HDFS du projet. Les Jours 1, 2 et 3 ont été rejoués dans l'ordre ; le Jour 4 a été exécuté pour les tests statistiques et la segmentation uniquement. Le dashboard reste volontairement à réaliser par Amine. Cette revue ne constitue donc pas une validation de l'application finale.
+Revue des notebooks, scripts, rapports et données HDFS du projet. Les Jours 1, 2 et 3 ont été rejoués dans l'ordre ; le Jour 4 a été exécuté pour les tests statistiques et la segmentation uniquement. Le dashboard, réalisé ensuite par Amine, est contrôlé dans la dernière section.
 
 **Résultat : les 24 cellules de code implémentées sont exécutées sans erreur** (J1 : 8 ; J2 : 6 ; J3 : 6 ; J4 : 4). Le script de contrôles croisés termine avec `success: true` dans [le rapport de validation](reports/global_validation.json).
 
@@ -57,10 +57,8 @@ Le fichier Parquet actif de Silver mesure **75 604 074 octets** et son bloc HDFS
 - Contrôles HDFS/Silver/Gold via `scripts/validate_project.py` : succès.
 - Le crash-test de DataNode du Jour 1 conserve sa preuve du 16 novembre ; il n'a pas été répété lors de cette revue. La relecture et l'ingestion du Jour 1 ont été réexécutées.
 
-## Reste à faire
+## Complément — dashboard (Amine)
 
-**Le dashboard Streamlit et sa validation visuelle/fonctionnelle.** Le fichier `app/dashboard.py` reste le squelette du cours. Un service HTTP Streamlit disponible ne prouve pas qu'un dashboard métier est terminé.
-
-La [fiche pour Amine](DASHBOARD-A-FAIRE.md) précise les tables, la portée des filtres, la réagrégation correcte des taux et les exigences d'affichage SQL. Le rapport du dashboard et la présentation finale seront à ajuster après réalisation de l'interface.
+Après un `git pull`, J2, J3 puis J4 ont été réexécutés sur le cluster local pour disposer des tables Gold corrigées et de `airport_segments`, puis `scripts/validate_project.py` a de nouveau réussi. `app/dashboard.py` respecte la [fiche](DASHBOARD-A-FAIRE.md) : lecture des seules tables Gold, taux réagrégés par sommes de numérateurs et dénominateurs, médianes et P90 affichés à leur granularité d'origine, portée de chaque filtre indiquée, mois séparés sur les courbes, ECP/PBG/UST signalés hors carte, requête SQL et justification sous chaque visualisation. Contrôles : `AppTest` de Streamlit sur huit combinaisons de filtres (dont sélection vide et aéroport sans coordonnées) sans exception, puis vérification visuelle sur http://localhost:8501. Détails dans la section « Dashboard Streamlit » de [Jour 4](Jour%204.md).
 
 Limites scientifiques conservées : quatre mois historiques non représentatifs d'une année entière, dépendance entre vols, différences de composition entre groupes, absence de démonstration causale et clusters descriptifs. Ces limites sont expliquées ; elles ne sont pas masquées par les petites p-values ou un taux de jointure de 100 %.

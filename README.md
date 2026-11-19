@@ -9,7 +9,7 @@ Projet de cours consacré aux retards des vols américains de 2015, basé sur le
 - **Jour 2 terminé :** diagnostic qualité, nettoyage, jointures broadcast, table Silver, journal Delta, Schema Enforcement, `MERGE` et Time Travel validés.
 - **Jour 3 terminé :** asymétrie des retards (médiane, IQR, P90), quatre tables Gold (Pareto des aéroports, tendance quotidienne avec `LAG`, compagnies par mois avec `ROW_NUMBER`, profil horaire) et compaction `OPTIMIZE`.
 - **Jour 4, partie tests et segmentation terminée :** deux tests statistiques, bootstrap des jours et trois profils K-Means.
-- **À réaliser :** dashboard Streamlit (Amine) et validation de son interface.
+- **Jour 4 terminé :** dashboard Streamlit sur les cinq tables Gold (carte, compagnies, évolution, profils d'aéroports ; filtres mois, compagnie et aéroport), vérifié sur http://localhost:8501.
 - [Présentation et progression du projet](PROJET-VOLS.md)
 - [Démarrage sous Windows](DEMARRAGE-WINDOWS.md)
 - [Notebook Jour 1 exécuté](notebooks/J1_HDFS_Ingestion_Bronze.ipynb)
@@ -18,9 +18,9 @@ Projet de cours consacré aux retards des vols américains de 2015, basé sur le
 - [Rapport Jour 2 — Silver et transactions Delta](Jour%202.md)
 - [Notebook Jour 3 exécuté](notebooks/J3_Analytics_SQL_Gold.ipynb)
 - [Rapport Jour 3 — statistiques et couche Gold](Jour%203.md)
-- [Rapport Jour 4 — tests et segmentation](Jour%204.md)
+- [Rapport Jour 4 — tests, segmentation et dashboard](Jour%204.md)
 - [Revue globale et vérifications](REVUE-GLOBALE.md)
-- [Dashboard : travail restant pour Amine](DASHBOARD-A-FAIRE.md)
+- [Cahier des charges du dashboard](DASHBOARD-A-FAIRE.md) et [application](app/dashboard.py)
 
 Les fichiers CSV restent hors Git. Après démarrage de Docker avec `docker compose up -d --build`, les données peuvent être régénérées avec :
 
@@ -203,10 +203,10 @@ task clean                               # Arrêter et purger les volumes HDFS
 
 ## Vérification du projet sur cette machine
 
-Les notebooks J1 à J3 et les cellules implémentées du Jour 4 ont été exécutés dans l'ordre. Pour contrôler les résultats sans réécrire les données :
+Les notebooks J1 à J4 ont été exécutés dans l'ordre. Pour contrôler les résultats sans réécrire les données :
 
 ```bash
 docker exec spark-jupyter python /workspace/scripts/validate_project.py
 ```
 
-Le rapport est écrit dans `reports/global_validation.json`. Après un clone, les volumes HDFS ne sont pas téléchargés depuis Git : préparer les données puis exécuter J1, J2, J3 et J4 dans cet ordre. Le dashboard reste le squelette du cours et n'est pas inclus dans la validation fonctionnelle.
+Le rapport est écrit dans `reports/global_validation.json`. Après un clone, les volumes HDFS ne sont pas téléchargés depuis Git : préparer les données puis exécuter J1, J2, J3 et J4 dans cet ordre. Le dashboard (http://localhost:8501) lit ensuite les tables Gold ; il est contrôlé à part (voir la section « Dashboard Streamlit » de [Jour 4](Jour%204.md)).
